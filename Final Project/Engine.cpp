@@ -1,5 +1,13 @@
 #include "Engine.h"
 
+
+// Private Functions
+Engine::Engine()
+{
+	_maxPlants = 100;
+}
+
+// Public Functions
 Engine* Engine::GetInstance()
 {
 	static Engine instance;

@@ -8,14 +8,16 @@ class Engine
 {
 private:
 	Vector<Entity*> _entities;
+	int _maxPlants;
 
-	Engine() { }
+	Engine();
 	~Engine() { }
 
 public:
 	static Engine* GetInstance();
 
 	Vector<Entity*>& GetEntities() { return _entities; }
+	int GetMaxPlants() { return _maxPlants; }
 
 	void Instantiate(Entity& entity, Vector3 pos = { 0, 0, 0 }, Vector3 rot = { 0, 0, 0 });
 

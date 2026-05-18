@@ -27,9 +27,9 @@ int main()
 	InputManager* inputManager = InputManager::GetInstance();
 
 	// Name, Energy, GrowthRate, EnergyRate, HealthRate, MaxHeight, RepThreshold, RepRate
-	PlantData data1 = { "Fern",  3, 0.05f, 0.5f, 1, 1.2f, 5.0f,  0.02f };
-	PlantData data2 = { "Shrub", 6, 0.03f, 0.3f, 1, 2.0f, 8.0f,  0.01f };
-	PlantData data3 = { "Grass", 2, 0.08f, 0.8f, 1, 0.8f, 3.0f,  0.04f };
+	PlantData data1 = { "Fern",  3, 0.05f, 0.5f, 1, 1.2f, 8.0f,  0.01f };
+	PlantData data2 = { "Shrub", 6, 0.03f, 0.3f, 1, 2.0f, 11.0f,  0.005f };
+	PlantData data3 = { "Grass", 2, 0.08f, 0.8f, 1, 0.8f, 5.0f,  0.02f };
 
 	// Name, Speed, Range, MaxHealth, MaxHunger, HungerRate
 	AnimalData herbData = { "Herbivore",    1.0f,  8,  80,  100, 0.5f };

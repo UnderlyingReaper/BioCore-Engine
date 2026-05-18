@@ -14,7 +14,7 @@ void Plant::Reproduce()
 	for (int i = 0; i < entities.Size(); i++)
 		if (dynamic_cast<Plant*>(entities[i])) plantCount++;
 
-	if (plantCount >= 20) return;
+	if (plantCount >= engine->GetMaxPlants()) return;
 
 	float angle = (float)GetRandomValue(0, 360) * DEG2RAD;
 	float radius = (float)GetRandomValue(20, 60) / 10.0f;
@@ -53,6 +53,11 @@ Plant::Plant(PlantData data, Vector3 scale) : Entity()
 	_healthRate = data.healthRate;
 
 	_maxHeight = data.maxHeight;
+
+	_reproductionThreshold = data.ReproductionThreshold;
+	_reproductionRate = data.ReproductionRate;
+	_reproductionCooldown = 0.0f;
+	_reproductionCooldownMax = 30.0f;
 }
 Plant::Plant(const Plant& o)
 {
@@ -60,14 +65,16 @@ Plant::Plant(const Plant& o)
 	_transform = o._transform;
 
 	_name = o._name;
-
 	_growthRate = o._growthRate;
 	_energy = o._energy;
-
 	_energyRate = o._energyRate;
 	_healthRate = o._healthRate;
-
 	_maxHeight = o._maxHeight;
+
+	_reproductionThreshold = o._reproductionThreshold;
+	_reproductionRate = o._reproductionRate;
+	_reproductionCooldown = o._reproductionCooldown;
+	_reproductionCooldownMax = o._reproductionCooldownMax;
 }
 
 void Plant::Update()
@@ -77,7 +84,10 @@ void Plant::Update()
 	{
 		_energy += _energyRate * Time::DeltaTime;
 		_transform.scale.y += _growthRate * Time::DeltaTime;
+		_transform.scale.y = Clamp(_transform.scale.y, 0, _maxHeight);
 	}
+
+	if (_transform.scale.y != _maxHeight) return;
 
 	_reproductionCooldown -= Time::DeltaTime;
 
