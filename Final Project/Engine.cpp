@@ -1,12 +1,14 @@
 #include "Engine.h"
 #include "Time.h"
 #include "InputManager.h"
+#include "UserInterfaceUtils.h"
 
 
 // Private Functions
 Engine::Engine()
 {
-	_maxPlants = 100;
+	_maxPlants = 200;
+	_MapSize = 100;
 }
 
 // Public Functions
@@ -28,8 +30,8 @@ void Engine::Instantiate(Entity& entity, Vector3 pos, Vector3 rot)
 
 void Engine::DrawWorld()
 {
-	DrawPlane({ 0, -0.01f, 0 }, { 200, 200 }, { 38, 70, 45, 255 });
-	DrawGrid(20, 5);
+	DrawPlane({ 0, -0.01f, 0 }, { 1000, 1000 }, { 38, 70, 45, 255 });
+	DrawGrid(20, 10);
 }
 void Engine::DrawHUD()
 {
@@ -39,16 +41,11 @@ void Engine::DrawHUD()
 	DrawText(TextFormat("Elapsed Time: %.1f", Time::ElapsedTime), 10, 10, 20, WHITE);
 	if (inputManager->IsPaused())
 	{
-		int textWidth = MeasureText("PAUSED", 24);
-		int posX = (GetScreenWidth() - textWidth) / 2;
-
-		DrawText("PAUSED", posX, 15, 24, RED);
+		DrawAlignedText("PAUSED", GetScreenWidth() / 2, 15, 24, RED);
 	}
 	if (Time::TimeScale > 1)
 	{
-		int textWidth = MeasureText(TextFormat("x%d", (int)Time::TimeScale), 20);
-		int posX = (GetScreenWidth() - textWidth) / 2;
-		DrawText(TextFormat("x%d", (int)Time::TimeScale), posX, 40, 20, ORANGE);
+		DrawAlignedText("SPED UP", GetScreenWidth() / 2, 40, 20, ORANGE);
 	}
 }
 

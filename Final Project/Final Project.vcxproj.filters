@@ -98,5 +98,8 @@
     <ClInclude Include="ApexPredator.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="UserInterfaceUtils.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -166,6 +166,7 @@
     <ClInclude Include="String.h" />
     <ClInclude Include="SpatialData.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="UserInterfaceUtils.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

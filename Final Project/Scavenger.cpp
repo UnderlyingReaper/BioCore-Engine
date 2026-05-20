@@ -26,7 +26,7 @@ void Scavenger::Wander()
 
 		_wanderTarget = {
 			_transform.position.x + randomDir.x * _range,
-			5,
+			10 + (float)GetRandomValue(-1, 3),
 			_transform.position.z + randomDir.z * _range
 		};
 
@@ -40,7 +40,7 @@ void Scavenger::Wander()
 }
 void Scavenger::Hunt()
 {
-	if (_targetAnimal->IsMarkedForDeletion())
+	if (_targetAnimal->IsMarkedForDeletion() || _targetAnimal == nullptr)
 	{
 		_targetAnimal = nullptr;
 		return;
@@ -81,6 +81,7 @@ Scavenger::Scavenger(const Scavenger& o) : Animal(o)
 	_hungerRate = o._hungerRate;
 
 	_targetAnimal = nullptr;
+	_reachedDestination = o._reachedDestination;
 }
 
 void Scavenger::Update()

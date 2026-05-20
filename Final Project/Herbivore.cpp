@@ -82,6 +82,7 @@ Herbivore::Herbivore(const Herbivore& o) : Animal(o)
 	_hungerRate = o._hungerRate;
 
 	_targetPlant = nullptr;
+	_reachedDestination = o._reachedDestination;
 }
 
 void Herbivore::Update()
