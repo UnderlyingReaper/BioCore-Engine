@@ -42,7 +42,8 @@ void ApexPredator::Wander()
 }
 void ApexPredator::Hunt()
 {
-	if (_targetAnimal->IsDead() || _targetAnimal->IsMarkedForDeletion())
+	if (_targetAnimal->IsDead() || _targetAnimal->IsMarkedForDeletion()
+		|| _targetAnimal->GetTransform().position.y > 0.5f)
 	{
 		_targetAnimal = nullptr;
 		return;

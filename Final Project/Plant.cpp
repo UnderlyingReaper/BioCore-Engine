@@ -17,7 +17,7 @@ void Plant::Reproduce()
 	if (plantCount >= engine->GetMaxPlants()) return;
 
 	float angle = (float)GetRandomValue(0, 360) * DEG2RAD;
-	float radius = (float)GetRandomValue(20, 60) / 10.0f;
+	float radius = (float)GetRandomValue(50, 100) / 10.0f;
 
 	Vector3 spawnPos = {
 		_transform.position.x + cosf(angle) * radius,
@@ -36,7 +36,7 @@ void Plant::Reproduce()
 		_reproductionRate * 0.8f
 	};
 
-	Plant child(childData, { 0.3f, 0.05f, 0.3f });
+	Plant child(childData);
 	engine->Instantiate(child, spawnPos);
 }
 
@@ -102,7 +102,7 @@ void Plant::Update()
 		{
 			Reproduce();
 			_reproductionCooldown = _reproductionCooldownMax;
-			_energy *= 0.6f; // reproduction costs energy
+			_energy *= 0.6f;
 		}
 	}
 }

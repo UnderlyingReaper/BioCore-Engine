@@ -9,6 +9,7 @@ private:
 	InputManager();
 	~InputManager();
 
+	void SetTimeScale(int n);
 public:
 	static InputManager* GetInstance();
 

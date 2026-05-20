@@ -75,16 +75,7 @@ int main()
 			EndMode3D();
 
 			// UI
-			DrawFPS(GetScreenWidth() - 80, 10);
-			DrawText(TextFormat("Elapsed Time: %.1f", Time::ElapsedTime), 10, 10, 20, WHITE);
-			if (inputManager->IsPaused())
-			{
-				int textWidth = MeasureText("PAUSED", 24);
-				int posX = (GetScreenWidth() - textWidth) / 2;
-
-				// Draw the aligned text
-				DrawText("PAUSED", posX, 15, 24, RED);
-			}
+			engine->DrawHUD();
 		EndDrawing();
 
 		// Post Frame Cleanup

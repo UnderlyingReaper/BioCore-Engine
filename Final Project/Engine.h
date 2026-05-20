@@ -22,6 +22,7 @@ public:
 	void Instantiate(Entity& entity, Vector3 pos = { 0, 0, 0 }, Vector3 rot = { 0, 0, 0 });
 
 	void DrawWorld();
+	void DrawHUD();
 	void UpdateTick();
 	void RenderPass();
 	void DeletePass();
